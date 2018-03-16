@@ -1,3 +1,5 @@
 <div>
-  <button (click)="removeTodo()">remove</button>{{todo.task}}
+  <button (click)="removeTodo()">remove</button>
+  <span [ngClass]="{'strike': todo.isCompleted}">{{todo.task}}</span>
+  <input type="checkbox" [(ngModel)]="todo.isCompleted">
 </div>
