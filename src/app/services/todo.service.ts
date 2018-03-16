@@ -5,31 +5,33 @@ import { Todo } from '../classes/todo';
 export class TodoService {
 
   private todos: Todo[];
-  private nextId: number;
 
   constructor() {
     this.todos = [
-      new Todo(0, "Learn to make an Angular app!"),
-      new Todo(1, "Send my phone to Samsung."),
-      new Todo(2, "Call the garage to ask why my car is not done.")
+      new Todo("Learn to make an Angular app!", false),
+      new Todo("Send my phone to Samsung.", false),
+      new Todo("Call the garage to ask why my car is not done.", false)
     ];
 
-    this.nextId = 3;
   }
 
-  public addTodo(text: string): void {
-    let todo = new Todo(this.nextId, text);
+  public addTodo(task: string, isCompleted: boolean): void {
+    let todo = new Todo(task, isCompleted);
     this.todos.push(todo);
-    this.nextId++;
   }
 
   public getTodos(): Todo[] {
     return this.todos;
   }
 
-  public removeTodo(id: number): void {
-    debugger;
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+  public getTodoIndex(todo): number {
+    let index = this.todos.indexOf(todo);
+
+    return index;
+  }
+
+  public removeTodo(index: number): void {
+    this.todos.splice(index, 1);
   }
 
 }
