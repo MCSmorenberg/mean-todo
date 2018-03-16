@@ -6,6 +6,7 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css']
 })
+
 export class InputComponent implements OnInit {
 
   private todoText: string;
@@ -18,7 +19,7 @@ export class InputComponent implements OnInit {
   }
 
   private addTodo(): void {
-    this.todoService.addTodo(this.todoText);
+    this.todoService.addTodo(this.todoText, false);
     this.todoText = '';
   }
 
