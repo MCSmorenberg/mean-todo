@@ -1,0 +1,7 @@
+.app {
+  width: 500px;
+  min-height: 85vh;
+  margin: 0 auto;
+  padding: 20px;
+  border: 6px solid #69b7b8;
+}

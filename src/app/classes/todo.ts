@@ -6,4 +6,8 @@ export class Todo {
     this.task = task;
     this.isCompleted = isCompleted;
   }
+
+  // The line below will do exactly the same as all the lines above.. = from ts
+  // constructor(public task: string, public isCompleted: boolean) {
+  // }
 }

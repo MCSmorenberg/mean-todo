@@ -1,0 +1,18 @@
+.todo-input {
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
+.todo-input__field {
+  border: none;
+  background-color: #F0F0F0;
+  border-bottom: 2px solid #69b7b8;
+  width: 200px;
+  height: 25px;
+}
+
+.todo-input__btn {
+  border: 2px solid #69b7b8;
+
+  height: 30px;
+}

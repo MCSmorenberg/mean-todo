@@ -1,8 +1,7 @@
-<div class="app">
-  <!-- <h1>{{ title }}!</h1> -->
+<section class="app">
   <app-header></app-header>
   <app-input></app-input>
-	<div *ngFor="let todo of todoService.getTodos()">
+	<section class="item-list" *ngFor="let todo of todoService.getTodos()">
 		<app-todo-item [todo]="todo"></app-todo-item>
-	</div>
-</div>
+	</section>
+</section>
