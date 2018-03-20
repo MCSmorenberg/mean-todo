@@ -10,17 +10,21 @@ import { TodoService } from '../../services/todo.service';
 export class TodoItemComponent implements OnInit {
 
   @Input()
+  // public todos = [];
+
   private todo: Todo;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private _todoService: TodoService) { }
 
   ngOnInit() {
+    // this._todoService.getTodos()
+    //   .subscribe(data => this.todos = data);
   }
 
   private removeTodo(): void {
-    let index = this.todoService.getTodoIndex(this.todo);
+    let index = this._todoService.getTodoIndex(this.todo);
 
-    this.todoService.removeTodo(index);
+    this._todoService.removeTodo(index);
   }
 
 }
