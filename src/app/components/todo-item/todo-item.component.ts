@@ -14,17 +14,17 @@ export class TodoItemComponent implements OnInit {
 
   private todo: Todo;
 
-  constructor(private _todoService: TodoService) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    // this._todoService.getTodos()
+    // this.todoService.getTodos()
     //   .subscribe(data => this.todos = data);
   }
 
   private removeTodo(): void {
-    let index = this._todoService.getTodoIndex(this.todo);
+    let index = this.todoService.getTodoIndex(this.todo);
 
-    this._todoService.removeTodo(index);
+    this.todoService.removeTodo(index);
   }
 
 }

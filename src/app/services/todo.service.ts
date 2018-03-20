@@ -14,11 +14,11 @@ export class TodoService {
   private todos: Todo[];
 
   constructor(private http: HttpClient) {
-    this.todos = [
-      new Todo("Learn to make an Angular app!", false),
-      new Todo("Send my phone to Samsung.", false),
-      new Todo("Call the garage to ask why my car is not done.", false)
-    ];
+    // this.todos = [
+    //   new Todo("Learn to make an Angular app!", false),
+    //   new Todo("Send my phone to Samsung.", false),
+    //   new Todo("Call the garage to ask why my car is not done.", false)
+    // ];
 
   }
 
@@ -26,10 +26,6 @@ export class TodoService {
     let todo = new Todo(task, isCompleted);
     this.todos.push(todo);
   }
-
-//   private extractData(res: Response) {
-//     return res.text() ? res.json() : {}; ;
-// }
 
   public getTodos(): Observable<any> {
   // public getTodos(): Todo[] {
