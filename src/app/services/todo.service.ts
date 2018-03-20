@@ -27,23 +27,24 @@ export class TodoService {
     this.todos.push(todo);
   }
 
-  private extractData(res: Response) {
-    return res.text() ? res.json() : {}; ;
-}
+//   private extractData(res: Response) {
+//     return res.text() ? res.json() : {}; ;
+// }
 
-  public getTodos(): Observable<Todo[]> {
+  public getTodos(): Observable<any> {
+  // public getTodos(): Todo[] {
 
     let apiTodos = [];
 
-    this.http.get('http://localhost:4000/api/todo')
+    return this.http.get('http://localhost:4000/api/todo');
     // this.http.get('http://localhost:4000/api/todo')
-      .subscribe(
-        data => { this.todos = data }),
-        err => console.error(err),
-        () => console.log('done loading..')
-      );
+      // .subscribe(
+      //   data => { this.todos = data }),
+      //   err => console.error(err),
+      //   () => console.log('done loading..')
+      // );
 
-      return this.todos;
+      // return this.todos;
 
     // .map(res => {
     //     return res.json().results.map(item => {
