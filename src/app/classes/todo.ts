@@ -1,6 +1,6 @@
 export class Todo {
-  task: string;
   isCompleted: boolean;
+  task: string;
 
   constructor(task: string, isCompleted: boolean) {
     this.isCompleted = isCompleted;

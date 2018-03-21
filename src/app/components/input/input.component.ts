@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { TodoService } from '../../services/todo.service';
 })
 
 export class InputComponent implements OnInit {
+
+  @Output() onAdded = new EventEmitter<string>();
 
   private todoText: string;
 
@@ -19,7 +21,16 @@ export class InputComponent implements OnInit {
   }
 
   private addTodo(): void {
-    this.todoService.addTodo(this.todoText, false);
+    this.todoService.addTodo(this.todoText, false)
+    .subscribe(
+      response => {
+        console.log(response);
+        // Emit an event `reload list` to the Todo List
+        this.onAdded.emit(response)
+      },
+      err => console.error(err)
+    );
+
     this.todoText = '';
   }
 
