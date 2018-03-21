@@ -1,4 +1,11 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+// import { pipe } from 'rxjs/util/pipe';
+// import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/observable';
+// import { ajax } from 'rxjs/observable/dom/ajax';
+// import { map, catchError } from 'rxjs/operators';
+// import * as Rx from "rxjs/Rx";
 import { Todo } from '../classes/todo';
 
 @Injectable()
@@ -6,12 +13,12 @@ export class TodoService {
 
   private todos: Todo[];
 
-  constructor() {
-    this.todos = [
-      new Todo("Learn to make an Angular app!", false),
-      new Todo("Send my phone to Samsung.", false),
-      new Todo("Call the garage to ask why my car is not done.", false)
-    ];
+  constructor(private http: HttpClient) {
+    // this.todos = [
+    //   new Todo("Learn to make an Angular app!", false),
+    //   new Todo("Send my phone to Samsung.", false),
+    //   new Todo("Call the garage to ask why my car is not done.", false)
+    // ];
 
   }
 
@@ -20,14 +27,34 @@ export class TodoService {
     this.todos.push(todo);
   }
 
-  public getTodos(): Todo[] {
-    return this.todos;
+  public getTodos(): Observable<any> {
+  // public getTodos(): Todo[] {
+
+    let apiTodos = [];
+
+    return this.http.get('http://localhost:4000/api/todo');
+    // this.http.get('http://localhost:4000/api/todo')
+      // .subscribe(
+      //   data => { this.todos = data }),
+      //   err => console.error(err),
+      //   () => console.log('done loading..')
+      // );
+
+      // return this.todos;
+
+    // .map(res => {
+    //     return res.json().results.map(item => {
+    //       return new Todo(
+    //           item.isCompleted,
+    //           item.task
+    //       );
+    //     });
+    //   });
+
   }
 
   public getTodoIndex(todo): number {
-    let index = this.todos.indexOf(todo);
-
-    return index;
+    return this.todos.indexOf(todo);
   }
 
   public removeTodo(index: number): void {

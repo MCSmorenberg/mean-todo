@@ -10,11 +10,15 @@ import { TodoService } from '../../services/todo.service';
 export class TodoItemComponent implements OnInit {
 
   @Input()
+  // public todos = [];
+
   private todo: Todo;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    // this.todoService.getTodos()
+    //   .subscribe(data => this.todos = data);
   }
 
   private removeTodo(): void {
