@@ -22,6 +22,19 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.getTodosList();
+  }
+
+  onAdded(result: string) {
+    console.log("Event received!: ", result)
+    this.appendTodo(result);
+  }
+
+  private appendTodo(todo): void {
+    this.todos.push(todo);
+  }
+
+  public getTodosList(): void {
     this.todoService.getTodos()
     .subscribe(
       data => {
