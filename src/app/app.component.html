@@ -2,6 +2,6 @@
   <app-header></app-header>
   <app-input (onAdded)="onAdded($event)"></app-input>
 	<section class="item-list" *ngFor="let todo of todos">
-		<app-todo-item [todo]="todo"></app-todo-item>
+		<app-todo-item [todo]="todo" (onRemove)="onRemove($event)"></app-todo-item>
 	</section>
 </section>

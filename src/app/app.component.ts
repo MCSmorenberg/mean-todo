@@ -15,9 +15,9 @@ export class AppComponent {
 
   constructor(private todoService: TodoService) {
     this.todos = [
-      new Todo("Learn to make an Angular app!", false),
-      new Todo("Send my phone to Samsung.", false),
-      new Todo("Call the garage to ask why my car is not done.", false)
+      // new Todo("Learn to make an Angular app!", false),
+      // new Todo("Send my phone to Samsung.", false),
+      // new Todo("Call the garage to ask why my car is not done.", false)
     ];
   }
 
@@ -30,11 +30,23 @@ export class AppComponent {
     this.appendTodo(result);
   }
 
+  onRemove(result: string) {
+    console.log("Event received!: ", result)
+    this.removeTodo(result);
+  }
+
   private appendTodo(todo): void {
     this.todos.push(todo);
   }
 
-  public getTodosList(): void {
+  private removeTodo(todo): void {
+    // let index = this.todoService.getTodoIndex(todo);
+    let index = this.todos.indexOf(todo);
+    debugger;
+    this.todos.splice(index, 1);
+  }
+
+  private getTodosList(): void {
     this.todoService.getTodos()
     .subscribe(
       data => {
