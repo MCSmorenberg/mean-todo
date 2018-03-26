@@ -40,9 +40,8 @@ export class AppComponent {
   }
 
   private removeTodo(todo): void {
-    // let index = this.todoService.getTodoIndex(todo);
-    let index = this.todos.indexOf(todo);
-    debugger;
+    let index = this.todos.map(function(todo) {return todo.task; }).indexOf(todo.task);
+
     this.todos.splice(index, 1);
   }
 
