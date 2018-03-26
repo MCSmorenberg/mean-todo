@@ -13,19 +13,20 @@ export class TodoService {
   public addTodo(task: string, isCompleted: boolean): Observable<any> {
     let todo = new Todo(task, isCompleted);
     // httpOptions? --> https://angular.io/guide/http#adding-headers
-    return this.http.post('http://localhost:4000/api/todo', todo);
+    return this.http.post('http://localhost:4000/api/todo/', todo);
   }
 
   public getTodos(): Observable<any> {
     return this.http.get('http://localhost:4000/api/todo');
   }
 
-  public getTodoIndex(todo): number {
-    return this.todos.indexOf(todo);
-  }
+  // public getTodoIndex(todo): number {
+  //   return this.todos.indexOf(todo);
+  // }
 
-  public removeTodo(index: number): void {
-    this.todos.splice(index, 1);
+  public removeTodo(id: string): Observable<any> {
+    return this.http.delete('http://localhost:4000/api/todo/' + id);
+    // this.todos.splice(index, 1);
   }
 
 }

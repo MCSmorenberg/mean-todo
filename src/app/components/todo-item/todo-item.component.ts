@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Todo } from '../../classes/todo';
 import { TodoService } from '../../services/todo.service';
 
@@ -7,11 +7,13 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
+
 export class TodoItemComponent implements OnInit {
 
-  @Input()
+  @Input() todo: any;
+  @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
 
-  private todo: Todo;
+  // private todo: Todo;
 
   constructor(private todoService: TodoService) { }
 
@@ -19,9 +21,14 @@ export class TodoItemComponent implements OnInit {
   }
 
   private removeTodo(): void {
-    let index = this.todoService.getTodoIndex(this.todo);
-
-    this.todoService.removeTodo(index);
+    this.todoService.removeTodo(this.todo._id)
+    .subscribe(
+      response => {
+        this.onRemove.emit(response);
+      }
+    )
+    // let index = this.todoService.getTodoIndex(this.todo);
+    // this.todoService.removeTodo(index);
   }
 
 }

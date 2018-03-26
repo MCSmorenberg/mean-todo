@@ -9,7 +9,7 @@ import { TodoService } from '../../services/todo.service';
 
 export class InputComponent implements OnInit {
 
-  @Output() onAdded = new EventEmitter<string>();
+  @Output() onAdded: EventEmitter<any> = new EventEmitter<string>();
 
   private todoText: string;
 
