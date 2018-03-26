@@ -37,7 +37,7 @@ export class TodoItemComponent implements OnInit {
       response => {
         console.log(response);
       },
-      err => console.error(err);
+      err => console.error(err)
     )
   }
 
