@@ -24,7 +24,6 @@ export class InputComponent implements OnInit {
     this.todoService.addTodo(this.todoText, false)
     .subscribe(
       response => {
-        console.log(response);
         // Emit an event `reload list` to the Todo List
         this.onAdded.emit(response)
       },
