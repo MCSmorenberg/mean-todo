@@ -31,4 +31,14 @@ export class TodoItemComponent implements OnInit {
     // this.todoService.removeTodo(index);
   }
 
+  private updateTodo(): void {
+    this.todoService.updateTodo(this.todo)
+    .subscribe(
+      response => {
+        console.log(response);
+      },
+      err => console.error(err);
+    )
+  }
+
 }

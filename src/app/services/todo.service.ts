@@ -20,6 +20,10 @@ export class TodoService {
     return this.http.get('http://localhost:4000/api/todo');
   }
 
+	public updateTodo(todo: Todo): Observable<any> {
+    return this.http.put('http://localhost:4000/api/todo/' + todo._id, todo);
+  }
+
   // public getTodoIndex(todo): number {
   //   return this.todos.indexOf(todo);
   // }
